@@ -8,16 +8,18 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 import { ChannelsModule } from './channels/channels.module';
 import { DmsModule } from './dms/dms.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 import * as ormconfig from '../ormconfig';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(ormconfig),
     UsersModule,
     WorkspacesModule,
     ChannelsModule,
     DmsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
